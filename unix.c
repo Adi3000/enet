@@ -372,6 +372,7 @@ enet_socket_set_option (ENetSocket socket, ENetSocketOption option, int value)
             break;
 
 #ifndef __WIIU__
+    #ifndef __3DS__
         case ENET_SOCKOPT_RCVTIMEO:
         {
             struct timeval timeVal;
@@ -389,6 +390,7 @@ enet_socket_set_option (ENetSocket socket, ENetSocketOption option, int value)
             result = setsockopt (socket, SOL_SOCKET, SO_SNDTIMEO, (char *) & timeVal, sizeof (struct timeval));
             break;
         }
+    #endif
 #endif
 
         case ENET_SOCKOPT_NODELAY:
